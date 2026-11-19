@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "disclosure-diff"
+version = "0.2.0.dev0"
+description = "What annual reports disclose about a topic, and how that changes year over year"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Rocky Auer" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = ["pdfminer.six>=20231228", "pypdf>=4"]
+
+[project.optional-dependencies]
+llm = ["anthropic>=2"]
+ocr = ["pillow>=10", "pypdfium2>=4.30", "pytesseract>=0.3.10"]
+dev = [
+    "anthropic>=2",
+    "pillow>=10",
+    "pypdfium2>=4.30",
+    "pytesseract>=0.3.10",
+    "pytest>=8",
+    "reportlab>=4",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+dia = "document_impact_analyzer.cli:main"
+
+[project.urls]
+Repository = "https://github.com/rocky2397/disclosure-diff"
+
+[tool.setuptools.packages.find]
+include = ["document_impact_analyzer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
