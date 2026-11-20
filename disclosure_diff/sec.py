@@ -2,7 +2,7 @@
 
 EDGAR is free and needs no key, but it asks every automated tool to say who is asking: a
 contact address in the User-Agent header. This module takes that address from the
-environment variable ``DIA_SEC_CONTACT`` and sends nothing without it.
+environment variable ``DISCLOSURE_DIFF_SEC_CONTACT`` and sends nothing without it.
 
 An annual filing is a Form 10-K, or a 20-F or 40-F for a foreign company. Its year is the
 year in which the reported period ends, which is how companies name their fiscal years:
@@ -19,7 +19,7 @@ import urllib.request
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass
 
-CONTACT_ENV = "DIA_SEC_CONTACT"
+CONTACT_ENV = "DISCLOSURE_DIFF_SEC_CONTACT"
 ANNUAL_FORMS = ("10-K", "20-F", "40-F")
 TICKERS_URL = "https://www.sec.gov/files/company_tickers.json"
 SUBMISSIONS_URL = "https://data.sec.gov/submissions/CIK{cik:010d}.json"

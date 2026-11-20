@@ -81,8 +81,10 @@ def test_a_refusal_or_a_non_html_answer_is_not_saved_as_a_filing():
 
 
 def test_nothing_is_sent_without_a_contact():
-    assert sec.contact_from({"DIA_SEC_CONTACT": " me@example.org "}) == "me@example.org"
-    with pytest.raises(sec.SecError, match="Set the environment variable DIA_SEC_CONTACT"):
+    assert sec.contact_from({"DISCLOSURE_DIFF_SEC_CONTACT": " me@example.org "}) == "me@example.org"
+    with pytest.raises(
+        sec.SecError, match="Set the environment variable DISCLOSURE_DIFF_SEC_CONTACT"
+    ):
         sec.contact_from({})
 
 
@@ -107,9 +109,9 @@ def test_fetch_stores_filings_by_ticker_and_year_and_notes_their_source(tmp_path
 
 
 def test_fetch_without_a_contact_or_for_a_missing_year_says_why(tmp_path, capsys, monkeypatch):
-    monkeypatch.delenv("DIA_SEC_CONTACT", raising=False)
+    monkeypatch.delenv("DISCLOSURE_DIFF_SEC_CONTACT", raising=False)
     assert main(["--data-dir", str(tmp_path), "fetch", "CVX", "2024"]) == 2
-    assert "Set the environment variable DIA_SEC_CONTACT" in capsys.readouterr().err
+    assert "Set the environment variable DISCLOSURE_DIFF_SEC_CONTACT" in capsys.readouterr().err
 
     assert main(["--data-dir", str(tmp_path), "fetch", "CVX", "2019"], sec_get=FakeSec()) == 2
     assert "No annual filing of CVX for 2019" in capsys.readouterr().err

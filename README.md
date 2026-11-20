@@ -50,16 +50,16 @@ by hand; see [Limits](#limits).
 
 ```bash
 pip install -e ".[llm]"
-mkdir dia-data
-export DIA_DATA_DIR="$PWD/dia-data"
+mkdir disclosure-diff-data
+export DISCLOSURE_DIFF_DATA_DIR="$PWD/disclosure-diff-data"
 export ANTHROPIC_API_KEY="your key"
-export DIA_SEC_CONTACT="you@example.org"
+export DISCLOSURE_DIFF_SEC_CONTACT="you@example.org"
 disclosure-diff run CAT 2024 2025
 ```
 
 - Requires Python 3.10 or newer. The `llm` extra is the Anthropic SDK.
 - The SEC asks automated tools to name a contact address, which is taken from
-  `DIA_SEC_CONTACT`.
+  `DISCLOSURE_DIFF_SEC_CONTACT`.
 - Any ticker of a company that files a Form 10-K works in place of `CAT`, and
   `--topic artificial_intelligence` or another of the five topics in place of the default,
   protectionism.
@@ -282,9 +282,10 @@ paragraphs were written anew and paired by that model; see
   output/      comparison reports
 ```
 
-The folder is taken from `--data-dir`, then the `DIA_DATA_DIR` environment variable, then a
-`.dia-data-dir` file in the current directory that holds the path. That file is ignored by
-git. If the folder is on an external drive that is not plugged in, the tool says so.
+The folder is taken from `--data-dir`, then the `DISCLOSURE_DIFF_DATA_DIR` environment
+variable, then a `.disclosure-diff-data-dir` file in the current directory that holds the
+path. That file is ignored by git. If the folder is on an external drive that is not
+plugged in, the tool says so.
 
 ## Development
 

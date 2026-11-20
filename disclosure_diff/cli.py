@@ -661,7 +661,10 @@ def build_parser() -> argparse.ArgumentParser:
         prog="disclosure-diff",
         description="What annual reports disclose about a topic, and how it changes.",
     )
-    parser.add_argument("--data-dir", help="data folder (default: DIA_DATA_DIR or .dia-data-dir)")
+    parser.add_argument(
+        "--data-dir",
+        help="data folder (default: DISCLOSURE_DIFF_DATA_DIR or .disclosure-diff-data-dir)",
+    )
     commands = parser.add_subparsers(dest="command", required=True)
 
     run = commands.add_parser(

@@ -1,8 +1,9 @@
 """Where the reports, extracted text and results live.
 
 The data is kept outside the repository, for example on an external drive. The location
-comes from, in this order: an explicit path, the ``DIA_DATA_DIR`` environment variable, or
-a ``.dia-data-dir`` file in the current directory that holds the path on its first line.
+comes from, in this order: an explicit path, the ``DISCLOSURE_DIFF_DATA_DIR`` environment
+variable, or a ``.disclosure-diff-data-dir`` file in the current directory that holds the
+path on its first line.
 """
 
 from __future__ import annotations
@@ -12,8 +13,8 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from pathlib import Path
 
-ENV_VAR = "DIA_DATA_DIR"
-POINTER_FILE = ".dia-data-dir"
+ENV_VAR = "DISCLOSURE_DIFF_DATA_DIR"
+POINTER_FILE = ".disclosure-diff-data-dir"
 
 
 class DataDirError(RuntimeError):

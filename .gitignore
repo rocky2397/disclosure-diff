@@ -63,4 +63,4 @@ output-preview/
 tests/test_output/
 
 # Local pointer to the data folder (see settings.py)
-.dia-data-dir
+.disclosure-diff-data-dir

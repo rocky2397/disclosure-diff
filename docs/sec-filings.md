@@ -14,7 +14,7 @@ page with a prescribed structure. `disclosure-diff fetch` downloads that filing 
   stored as `reports/<TICKER>/<year>.htm`. A fiscal year that ends in June 2025 is 2025.
   The SEC's list reaches back about five to seven years.
 - **Contact.** The SEC asks automated tools to name a contact address. It is taken from
-  the environment variable `DIA_SEC_CONTACT`, and nothing is sent without it.
+  the environment variable `DISCLOSURE_DIFF_SEC_CONTACT`, and nothing is sent without it.
 - **Paragraphs** are the block elements of the page. Hidden machine-readable data is left
   out. A table cell that holds a sentence, as in a bullet list set as a table, is a
   paragraph; a cell with a number is too short to be kept.
