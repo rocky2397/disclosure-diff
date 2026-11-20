@@ -31,7 +31,7 @@ dev = [
 ]
 
 [project.scripts]
-dia = "disclosure_diff.cli:main"
+disclosure-diff = "disclosure_diff.cli:main"
 
 [project.urls]
 Repository = "https://github.com/rocky2397/disclosure-diff"

@@ -4,8 +4,8 @@ Recorded on 19 November 2026.
 
 Until now every report was a PDF, and every new company needed a fix to the PDF reading.
 A company listed in the United States also files its annual report with the SEC as a web
-page with a prescribed structure. `dia fetch` downloads that filing by ticker, and
-`dia extract` reads it.
+page with a prescribed structure. `disclosure-diff fetch` downloads that filing by ticker, and
+`disclosure-diff extract` reads it.
 
 ## How it works
 
@@ -100,7 +100,7 @@ cost about 4 cents.
 
 ## Ten more companies
 
-Added on 19 November 2026, after `dia run` existed. One command each, for protectionism:
+Added on 19 November 2026, after `disclosure-diff run` existed. One command each, for protectionism:
 Deere (DE), Ford (F), Apple (AAPL), Nike (NKE), Walmart (WMT), Boeing (BA), Nucor (NUE),
 Procter & Gamble (PG), Whirlpool (WHR) and Nvidia (NVDA). The two latest filings of each
 were compared. A year is the year in which the reported period ends, so Walmart and

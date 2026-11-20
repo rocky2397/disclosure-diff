@@ -63,7 +63,7 @@ def test_changes_writes_a_report(data_dir, capsys):
 
 def test_changes_needs_extracted_passages(data_dir, capsys):
     assert main(["--data-dir", str(data_dir), "changes", "ACME", "2024", "2025"]) == 2
-    assert "Run 'dia extract' first" in capsys.readouterr().err
+    assert "Run 'disclosure-diff extract' first" in capsys.readouterr().err
 
 
 class StubJudge:
@@ -230,7 +230,7 @@ def test_changes_refuses_one_judged_and_one_unjudged_year(extracted, capsys):
     judge_year(extracted, 2025)
     capsys.readouterr()
     assert main(["--data-dir", str(extracted), "changes", "ACME", "2024", "2025"]) == 2
-    assert "ACME 2025 is judged but 2024 is not. Run 'dia judge ACME 2024'" in (
+    assert "ACME 2025 is judged but 2024 is not. Run 'disclosure-diff judge ACME 2024'" in (
         capsys.readouterr().err
     )
 
@@ -256,7 +256,7 @@ def test_eval_freeze_and_eval(extracted, capsys):
     assert run("eval-freeze") == 2
     assert "No judged passages for protectionism" in capsys.readouterr().err
     assert run("eval") == 2
-    assert "Run 'dia eval-freeze' first" in capsys.readouterr().err
+    assert "Run 'disclosure-diff eval-freeze' first" in capsys.readouterr().err
 
     judge_year(extracted, 2024)
     judge_year(extracted, 2025)
@@ -328,7 +328,7 @@ def test_pair_matches_passages_that_were_written_anew(rewritten, capsys):
     assert run("changes", "ACME", "2024", "2025") == 0
     out = capsys.readouterr().out
     assert out.startswith("2 new, 0 changed, 2 dropped, 0 unchanged.")
-    assert "Run 'dia pair ACME 2024 2025' to match those." in out
+    assert "Run 'disclosure-diff pair ACME 2024 2025' to match those." in out
 
     assert run("pair", "ACME", "2024", "2025", "--dry-run", judge_factory=StubJudge) == 0
     out = capsys.readouterr().out
@@ -347,7 +347,7 @@ def test_pair_matches_passages_that_were_written_anew(rewritten, capsys):
     out = capsys.readouterr().out
     assert out.startswith("1 new, 1 changed, 1 dropped, 0 unchanged.")
     assert "Written anew and paired by claude-haiku-5-5: 1 of the changed passages." in out
-    assert "Run 'dia pair" not in out
+    assert "Run 'disclosure-diff pair" not in out
     report = (rewritten / "output" / "ACME_protectionism_2024_2025.md").read_text("utf-8")
     assert "Written anew; paired by claude-haiku-5-5. Wording similarity 0." in report
     assert report.index("p. 66") < report.index("p. 64")  # the later text is shown first

@@ -6,7 +6,7 @@ Recorded on 18 November 2026.
 
 The judging step uses `claude-haiku-5-5` by default, at low effort. Until this date the
 default was `claude-opus-5-5`. Any other model can be chosen per run with
-`dia judge --model`.
+`disclosure-diff judge --model`.
 
 ## Why
 

@@ -12,7 +12,7 @@ built for each, what was tried first, and what it changed on the reports read so
   after it.** It becomes a passage about the company only if the model quotes, word for
   word, the neighbouring sentence that states the link. Passages judged as about the
   company or as off topic are not looked at again.
-- **`dia pair` asks the model which unmatched passages of two reports are the same
+- **`disclosure-diff pair` asks the model which unmatched passages of two reports are the same
   statement written anew.** One request holds all of them. The model only pairs; it
   writes nothing about the difference, and the report prints both texts.
 - Both use the default judge, `claude-haiku-5-5` at low effort.
@@ -24,9 +24,9 @@ section and on the same or the adjoining page.
 
 ### What was tried first: neighbours on every request
 
-The first version sent the neighbours with every passage. Measured with `dia eval` on the
-31 reference passages (verdicts by `claude-opus-5-5`, each made on the passage alone),
-two runs each, 62 answers:
+The first version sent the neighbours with every passage. Measured with
+`disclosure-diff eval` on the 31 reference passages (verdicts by `claude-opus-5-5`, each
+made on the passage alone), two runs each, 62 answers:
 
 | Setup | Company, background or off topic | Risk or opportunity | Concreteness | Says what the company does | Evidence word for word | Input tokens |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -114,5 +114,5 @@ forced pair, so the more cautious model stays the default.
   and in the frozen reference.
 - The reference now also holds the neighbouring paragraphs of each passage. They were
   added to the existing file; its passages, verdicts and date are unchanged.
-- A pairing is stored with the list of passages the model saw. `dia changes` says when
-  passages have been added since, so that `dia pair` can be run again.
+- A pairing is stored with the list of passages the model saw. `disclosure-diff changes` says when
+  passages have been added since, so that `disclosure-diff pair` can be run again.

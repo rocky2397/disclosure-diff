@@ -7,7 +7,7 @@ checked against the source.
 ## Example: Caterpillar and tariffs
 
 ```bash
-dia run CAT 2024 2025
+disclosure-diff run CAT 2024 2025
 ```
 
 This downloads Caterpillar's annual filings for both years from the SEC, reads about 490
@@ -54,7 +54,7 @@ mkdir dia-data
 export DIA_DATA_DIR="$PWD/dia-data"
 export ANTHROPIC_API_KEY="your key"
 export DIA_SEC_CONTACT="you@example.org"
-dia run CAT 2024 2025
+disclosure-diff run CAT 2024 2025
 ```
 
 - Requires Python 3.10 or newer. The `llm` extra is the Anthropic SDK.
@@ -69,19 +69,19 @@ dia run CAT 2024 2025
   nothing and sends nothing twice.
 - For a company that does not file with the SEC, put its reports into the data folder
   as `reports/<COMPANY>/<year>.pdf`, named after the reporting year, and run
-  `dia run <COMPANY> 2024 2025`.
+  `disclosure-diff run <COMPANY> 2024 2025`.
 
 ## The steps one by one
 
-`dia run` is these commands in a row. Each can be run alone, with more options.
+`disclosure-diff run` is these commands in a row. Each can be run alone, with more options.
 
 ```bash
-dia fetch CAT 2024 2025
-dia extract
-dia judge CAT 2024
-dia judge CAT 2025
-dia pair CAT 2024 2025
-dia changes CAT 2024 2025
+disclosure-diff fetch CAT 2024 2025
+disclosure-diff extract
+disclosure-diff judge CAT 2024
+disclosure-diff judge CAT 2025
+disclosure-diff pair CAT 2024 2025
+disclosure-diff changes CAT 2024 2025
 ```
 
 - **`fetch`** downloads a company's annual filing with the SEC (Form 10-K) by ticker.
@@ -103,11 +103,11 @@ dia changes CAT 2024 2025
 Two more commands look across a report or across years:
 
 ```bash
-dia years RWE
+disclosure-diff years RWE
 ```
 
 ```bash
-dia scan RWE 2025
+disclosure-diff scan RWE 2025
 ```
 
 - **`years`** prints one line per report: paragraphs found, how many are about the
@@ -133,11 +133,11 @@ Useful options:
 ### Evaluate
 
 ```bash
-dia eval-freeze
+disclosure-diff eval-freeze
 ```
 
 ```bash
-dia eval
+disclosure-diff eval
 ```
 
 `eval-freeze` keeps the current verdicts, with their passages, as a fixed reference.
@@ -151,7 +151,7 @@ Five topics are defined in `disclosure_diff/topics.py`: protectionism, climate
 change, artificial intelligence, Covid-19 and cybersecurity. Pass for example
 `--topic artificial_intelligence` to any command. A topic is a list of search phrases, the
 question a passage has to answer, and a sentence on what the phrases also find that is not
-the topic. Adding one takes a few lines; `dia scan` then shows what its phrases miss.
+the topic. Adding one takes a few lines; `disclosure-diff scan` then shows what its phrases miss.
 
 ## Results so far
 
@@ -194,7 +194,7 @@ the company, with those that state a figure in brackets:
 | Protectionism | 7 (0) | 7 (1) | 5 (0) | 15 (6) | 3 (0) | 5 (0) |
 | Artificial intelligence | 6 (0) | 6 (1) | 2 (0) | 3 (0) | 60 (1) | 55 (1) |
 
-Ten more companies, one `dia run` each, none of which needed a change to the reader.
+Ten more companies, one `disclosure-diff run` each, none of which needed a change to the reader.
 Passages on protectionism about the company, in the two latest filings:
 
 | | Deere | Ford | Apple | Nike | Walmart | Boeing | Nucor | P&G | Whirlpool | Nvidia |
@@ -237,7 +237,7 @@ paragraphs were written anew and paired by that model; see
 
 ## Limits
 
-- **Accuracy is not measured.** No person has labelled anything. `dia eval` measures
+- **Accuracy is not measured.** No person has labelled anything. `disclosure-diff eval` measures
   agreement with a frozen set of one model's verdicts: the default judge matches it on
   92% of answers. For RWE, two other models also read the same paragraphs without seeing
   the verdicts and agreed with the earlier judge, `claude-opus-5-5`, on 19 of 20. All of
@@ -278,7 +278,7 @@ paragraphs were written anew and paired by that model; see
   judged/      judgements on the paragraphs found for a topic
   paired/      pairs of paragraphs that were written anew
   scanned/     judgements on paragraphs the search did not find
-  eval/        the frozen reference for dia eval
+  eval/        the frozen reference for disclosure-diff eval
   output/      comparison reports
 ```
 
@@ -303,7 +303,7 @@ logical change each. Decisions that should outlive a commit message go into `doc
 The first version scored "vulnerability" from single-word overlap and a movie-review
 sentiment model. It was replaced in November 2026; the 13 passages it wrongly marked as
 relevant are kept as a test. Commands for labelling passages by hand and scoring against
-those labels were built and then removed, because nobody was going to label; `dia eval`
+those labels were built and then removed, because nobody was going to label; `disclosure-diff eval`
 replaced them.
 
 The project was first called Document Impact Analyzer. The Python package and the `dia`

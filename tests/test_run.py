@@ -27,7 +27,7 @@ def test_run_goes_from_a_ticker_to_the_report(tmp_path, sec_site, capsys):
     args = ["--data-dir", str(tmp_path), "run", "cvx", "2024", "2025"]
     assert main(args, judge_factory=StubJudge, sec_get=sec_site) == 0
     out = capsys.readouterr().out
-    assert "CVX is CHEVRON CORP." in out and "Run 'dia extract'" not in out
+    assert "CVX is CHEVRON CORP." in out and "Run 'disclosure-diff extract'" not in out
     assert "CVX 2024: 5 passages from a Form 10-K filing, in 2 items" in out
     assert "CVX 2025, Protectionism: 2 passages found, 0 already judged, 2 to send" in out
     assert "  2024 Item 1A. Risk Factors -> 2025 Item 1A. Risk Factors\n1 pairs found." in out

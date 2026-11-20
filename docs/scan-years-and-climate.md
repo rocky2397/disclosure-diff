@@ -7,7 +7,7 @@ cost about 22 cents at list prices.
 
 ## What the phrase search misses
 
-`dia scan RWE 2025` had the judge read every paragraph the search had not found.
+`disclosure-diff scan RWE 2025` had the judge read every paragraph the search had not found.
 
 | | Paragraphs |
 | --- | --- |
@@ -43,9 +43,9 @@ read.
 The 2021, 2022 and 2023 reports were added. The 2022 and 2023 PDFs carry the publisher's
 setting against copying text. The tool skips such files unless told otherwise; the owner
 of this repository decided on 19 November 2026 to read them, with
-`dia extract --allow-restricted`. No reading fix was needed for any of the three.
+`disclosure-diff extract --allow-restricted`. No reading fix was needed for any of the three.
 
-Protectionism, from `dia years RWE`:
+Protectionism, from `disclosure-diff years RWE`:
 
 | Year | Paragraphs read | Found | About the company | With a figure | Says what the company does | Background | Off topic |
 | --- | --- | --- | --- | --- | --- | --- | --- |

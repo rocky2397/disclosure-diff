@@ -1,15 +1,15 @@
 """Command line.
 
-``dia run`` does everything below for one company and two years, in one go.
-``dia fetch`` downloads a company's annual filing from the SEC by ticker.
-``dia extract`` reads the reports in the data folder into passages.
-``dia judge`` asks Claude whether each passage found for a topic is about the company.
-``dia scan`` has Claude read the passages the phrase search did not find.
-``dia pair`` asks Claude which passages of two reports are the same statement written anew.
-``dia years`` counts, report by report, what a company says about a topic.
-``dia changes`` compares what two reports of a company say about a topic.
-``dia eval-freeze`` keeps the current verdicts as a reference.
-``dia eval`` judges the reference passages again and counts matching answers.
+``disclosure-diff run`` does everything below for one company and two years, in one go.
+``disclosure-diff fetch`` downloads a company's annual filing from the SEC by ticker.
+``disclosure-diff extract`` reads the reports in the data folder into passages.
+``disclosure-diff judge`` asks Claude whether each passage found for a topic is about the company.
+``disclosure-diff scan`` has Claude read the passages the phrase search did not find.
+``disclosure-diff pair`` asks Claude which passages of two reports are the same statement, reworded.
+``disclosure-diff years`` counts, report by report, what a company says about a topic.
+``disclosure-diff changes`` compares what two reports of a company say about a topic.
+``disclosure-diff eval-freeze`` keeps the current verdicts as a reference.
+``disclosure-diff eval`` judges the reference passages again and counts matching answers.
 """
 
 from __future__ import annotations
@@ -113,7 +113,7 @@ def _fetch(data: DataDir, args: argparse.Namespace) -> int:
             f"filed {filing.filed}, {len(content) / 1e6:.1f} MB"
         )
     if args.command == "fetch":
-        print("Run 'dia extract' to read them.")
+        print("Run 'disclosure-diff extract' to read them.")
     return 0
 
 
@@ -177,7 +177,9 @@ def _extract(data: DataDir, args: argparse.Namespace) -> int:
 def _passages(data: DataDir, company: str, year: int) -> list[Passage]:
     path = extracted_path(data, company, year)
     if not path.is_file():
-        raise ValueError(f"No extracted passages for {company} {year}. Run 'dia extract' first.")
+        raise ValueError(
+            f"No extracted passages for {company} {year}. Run 'disclosure-diff extract' first."
+        )
     return list(read_jsonl(path))
 
 
@@ -313,14 +315,14 @@ def _select(
     if args.all_passages or not with_judgements:
         note = (
             "Not judged: this includes passages that mention the topic only in passing. "
-            "Run 'dia judge' for both years to keep only passages about the company."
+            "Run 'disclosure-diff judge' for both years to keep only passages about the company."
         )
         return found[years[0]], found[years[1]], {}, [note]
     if len(judged_years) == 1:
         missing = next(year for year in years if year not in judged_years)
         raise ValueError(
             f"{args.company} {judged_years[0]} is judged but {missing} is not. "
-            f"Run 'dia judge {args.company} {missing}' or pass --all-passages."
+            f"Run 'disclosure-diff judge {args.company} {missing}' or pass --all-passages."
         )
 
     keep = {Relevance.COMPANY} | ({Relevance.CONTEXT} if args.include_context else set())
@@ -422,7 +424,7 @@ def _pairing_notes(
 ) -> list[str]:
     """What the reader should know about passages that were written anew."""
     dropped, new = unmatched(changes)
-    command = f"'dia pair {args.company} {args.year_before} {args.year_after}'"
+    command = f"'disclosure-diff pair {args.company} {args.year_before} {args.year_after}'"
     if pairing is None:
         if not dropped or not new:
             return []
@@ -488,7 +490,7 @@ def _years(data: DataDir, args: argparse.Namespace) -> int:
 
 
 def _step(args: argparse.Namespace, **values: object) -> argparse.Namespace:
-    """The arguments for one step of ``dia run``: those given, plus what the step needs."""
+    """The arguments for one step of a run: those given, plus what the step needs."""
     return argparse.Namespace(**{**vars(args), **values})
 
 
@@ -574,7 +576,9 @@ def _eval_freeze(data: DataDir, args: argparse.Namespace) -> int:
                     evalset.make_case(passage, judgements[passage.id], neighbours[passage.id])
                 )
     if not cases:
-        raise ValueError(f"No judged passages for {topic.name.lower()}. Run 'dia judge' first.")
+        raise ValueError(
+            f"No judged passages for {topic.name.lower()}. Run 'disclosure-diff judge' first."
+        )
     evalset.write_reference(cases, target, frozen_on=date.today().isoformat())
     models = ", ".join(sorted({case.reference_model for case in cases}))
     print(f"{len(cases)} passages frozen as the reference, with verdicts by {models}.")
@@ -586,7 +590,7 @@ def _eval(data: DataDir, args: argparse.Namespace) -> int:
     topic = get_topic(args.topic)
     source = reference_path(data, topic.key)
     if not source.is_file():
-        raise ValueError(f"No reference at {source}. Run 'dia eval-freeze' first.")
+        raise ValueError(f"No reference at {source}. Run 'disclosure-diff eval-freeze' first.")
     cases, frozen_on = evalset.read_reference(source)
     made_by = ", ".join(sorted({case.reference_model for case in cases}))
     requests = len(cases) * args.runs
@@ -654,7 +658,8 @@ def _eval(data: DataDir, args: argparse.Namespace) -> int:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="dia", description="What annual reports disclose about a topic, and how it changes."
+        prog="disclosure-diff",
+        description="What annual reports disclose about a topic, and how it changes.",
     )
     parser.add_argument("--data-dir", help="data folder (default: DIA_DATA_DIR or .dia-data-dir)")
     commands = parser.add_subparsers(dest="command", required=True)
@@ -729,7 +734,7 @@ def build_parser() -> argparse.ArgumentParser:
     judge.set_defaults(run=_judge)
 
     freeze = commands.add_parser(
-        "eval-freeze", help="keep the current verdicts as the reference for 'dia eval'"
+        "eval-freeze", help="keep the current verdicts as the reference for 'disclosure-diff eval'"
     )
     freeze.add_argument("--topic", default="protectionism", choices=sorted(TOPICS))
     freeze.add_argument("--force", action="store_true", help="replace an existing reference")
@@ -775,8 +780,10 @@ def build_parser() -> argparse.ArgumentParser:
     pair.add_argument("--topic", default="protectionism", choices=sorted(TOPICS))
     pair.add_argument("--model", default=DEFAULT_MODEL)
     pair.add_argument("--effort", default=DEFAULT_EFFORT)
-    pair.add_argument("--include-context", action="store_true", help="as in 'dia changes'")
-    pair.add_argument("--all-passages", action="store_true", help="as in 'dia changes'")
+    pair.add_argument(
+        "--include-context", action="store_true", help="as in 'disclosure-diff changes'"
+    )
+    pair.add_argument("--all-passages", action="store_true", help="as in 'disclosure-diff changes'")
     pair.add_argument(
         "--dry-run", action="store_true", help="show what would be sent, send nothing"
     )

@@ -42,8 +42,8 @@ PROTECTIONISM = Topic(
         "trade tension",
         "trade policy",
         "trade sanction",
-        # Found by 'dia scan' on RWE's 2025 report: "If cross-border trade is limited, it
-        # may prove impossible to deliver certain projects."
+        # Found by 'disclosure-diff scan' on RWE's 2025 report: "If cross-border trade is
+        # limited, it may prove impossible to deliver certain projects."
         "cross-border trade",
         "tariff",
         "import duty",

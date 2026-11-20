@@ -14,7 +14,7 @@ protectionism (a tariff as a price plan). They are now neutral, and a topic carr
 sentence of its own, `not_this`, on what its search phrases also find. It is sent with
 each request.
 
-`dia eval` on the protectionism reference, before and after:
+`disclosure-diff eval` on the protectionism reference, before and after:
 
 | Answer | Before | After |
 | --- | --- | --- |

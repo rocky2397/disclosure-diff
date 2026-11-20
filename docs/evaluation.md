@@ -9,11 +9,11 @@ against. The eval works with a **reference** instead: the verdicts stored at one
 time, frozen together with the text of their passages.
 
 ```bash
-dia eval-freeze
+disclosure-diff eval-freeze
 ```
 
 ```bash
-dia eval
+disclosure-diff eval
 ```
 
 `eval-freeze` writes `eval/reference_<topic>.jsonl` into the data folder and refuses to
@@ -90,5 +90,5 @@ are the same three passages on which the two models differed in
 On 19 November 2026 the eval was used to choose how the judge is shown the paragraphs
 around a passage. Four setups were run against this reference; the figures and the
 decision are in [neighbours-and-pairing.md](neighbours-and-pairing.md). Since then the
-reference also holds each passage's neighbouring paragraphs, and `dia eval --no-context`
+reference also holds each passage's neighbouring paragraphs, and `disclosure-diff eval --no-context`
 judges every passage alone, as in the first run.
