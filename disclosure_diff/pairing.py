@@ -17,9 +17,9 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from document_impact_analyzer.passages import Passage, normalize
-from document_impact_analyzer.settings import DataDir
-from document_impact_analyzer.topics import Topic
+from disclosure_diff.passages import Passage, normalize
+from disclosure_diff.settings import DataDir
+from disclosure_diff.topics import Topic
 
 # One request holds every unmatched passage of both years. Beyond this many, the request
 # gets long and the pairs unreliable, so it is refused instead of silently cut.

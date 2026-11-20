@@ -3,9 +3,9 @@ import shutil
 
 import pytest
 
-from document_impact_analyzer import ingest
-from document_impact_analyzer.cli import main
-from document_impact_analyzer.ingest import (
+from disclosure_diff import ingest
+from disclosure_diff.cli import main
+from disclosure_diff.ingest import (
     Block,
     OcrUnavailable,
     PageScan,

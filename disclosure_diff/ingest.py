@@ -41,8 +41,8 @@ from pdfminer.layout import (
 from pypdf import PdfReader
 from pypdf.constants import UserAccessPermissions
 
-from document_impact_analyzer.passages import Passage, normalize
-from document_impact_analyzer.sections import Section, clean_title, is_narrative, section_for_page
+from disclosure_diff.passages import Passage, normalize
+from disclosure_diff.sections import Section, clean_title, is_narrative, section_for_page
 
 # Lines up to one line height apart belong to one block. Body text in annual reports is
 # set with generous leading, and pdfminer's default of 0.5 puts every line in its own block.

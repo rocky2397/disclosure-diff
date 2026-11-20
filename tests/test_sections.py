@@ -1,6 +1,6 @@
 import pytest
 
-from document_impact_analyzer.sections import (
+from disclosure_diff.sections import (
     Section,
     chapter_of,
     clean_title,

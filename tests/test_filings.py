@@ -1,14 +1,14 @@
 import pytest
 
-from document_impact_analyzer.cli import main
-from document_impact_analyzer.filings import (
+from disclosure_diff.cli import main
+from disclosure_diff.filings import (
     UnreadableFiling,
     extract_filing,
     item_heading,
     read_paragraphs,
     section_title,
 )
-from document_impact_analyzer.passages import read_jsonl
+from disclosure_diff.passages import read_jsonl
 
 FILING = """<html><head><title>acme-20241231</title><style>p {margin: 0}</style></head><body>
 <div style="display:none"><ix:header><ix:hidden>

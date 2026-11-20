@@ -1,7 +1,7 @@
 import pytest
 
-from document_impact_analyzer.changes import Status, compare_years, has_amount, similarity
-from document_impact_analyzer.passages import Passage
+from disclosure_diff.changes import Status, compare_years, has_amount, similarity
+from disclosure_diff.passages import Passage
 
 BOILERPLATE = (
     "Changes in trade policy, including tariffs and sanctions, could adversely affect our "

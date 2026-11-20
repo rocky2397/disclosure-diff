@@ -3,17 +3,17 @@ from dataclasses import replace
 
 import pytest
 
-from document_impact_analyzer.cli import main
-from document_impact_analyzer.judge import JudgeError
-from document_impact_analyzer.judgements import (
+from disclosure_diff.cli import main
+from disclosure_diff.judge import JudgeError
+from disclosure_diff.judgements import (
     Concreteness,
     Direction,
     Judgement,
     Relevance,
     read_judgements,
 )
-from document_impact_analyzer.pairing import Pair
-from document_impact_analyzer.passages import Passage, read_jsonl, write_jsonl
+from disclosure_diff.pairing import Pair
+from disclosure_diff.passages import Passage, read_jsonl, write_jsonl
 
 
 @pytest.fixture
@@ -463,7 +463,7 @@ def test_a_drive_that_goes_away_during_a_run_is_reported(extracted, capsys, monk
     def unplugged(path, judgement):
         raise FileNotFoundError(2, "No such file or directory", str(path))
 
-    monkeypatch.setattr("document_impact_analyzer.cli.append_judgement", unplugged)
+    monkeypatch.setattr("disclosure_diff.cli.append_judgement", unplugged)
     args = ["--data-dir", str(extracted), "judge", "ACME", "2025"]
     assert main(args, judge_factory=StubJudge) == 2
     err = capsys.readouterr().err

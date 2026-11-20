@@ -1,6 +1,6 @@
 import pytest
 
-from document_impact_analyzer.topics import TOPICS, get_topic
+from disclosure_diff.topics import TOPICS, get_topic
 
 
 def test_known_topic():

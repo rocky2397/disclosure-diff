@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 import pytest
 
-from document_impact_analyzer.judge import (
+from disclosure_diff.judge import (
     ANSWER_SCHEMA,
     FALLBACK_BETA,
     NEIGHBOURS_PROMPT,
@@ -14,10 +14,10 @@ from document_impact_analyzer.judge import (
     JudgeError,
     build_request,
 )
-from document_impact_analyzer.judgements import Concreteness, Direction, Relevance
-from document_impact_analyzer.pairing import PAIR_PROMPT, PAIR_SCHEMA, Pair, build_pair_request
-from document_impact_analyzer.passages import Neighbours, Passage
-from document_impact_analyzer.topics import PROTECTIONISM
+from disclosure_diff.judgements import Concreteness, Direction, Relevance
+from disclosure_diff.pairing import PAIR_PROMPT, PAIR_SCHEMA, Pair, build_pair_request
+from disclosure_diff.passages import Neighbours, Passage
+from disclosure_diff.topics import PROTECTIONISM
 
 anthropic = pytest.importorskip("anthropic")
 

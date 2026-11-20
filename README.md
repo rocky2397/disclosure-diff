@@ -147,7 +147,7 @@ quoted word for word, and what the run used. It needs no labelling. It measures
 agreement with the model that made the reference, not accuracy; see
 [docs/evaluation.md](docs/evaluation.md) for what that is good for and the first run.
 
-Five topics are defined in `document_impact_analyzer/topics.py`: protectionism, climate
+Five topics are defined in `disclosure_diff/topics.py`: protectionism, climate
 change, artificial intelligence, Covid-19 and cybersecurity. Pass for example
 `--topic artificial_intelligence` to any command. A topic is a list of search phrases, the
 question a passage has to answer, and a sentence on what the phrases also find that is not

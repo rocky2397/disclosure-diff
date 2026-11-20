@@ -1,7 +1,7 @@
 import pytest
 
-from document_impact_analyzer.changes import Status, compare_years, unmatched
-from document_impact_analyzer.pairing import (
+from disclosure_diff.changes import Status, compare_years, unmatched
+from disclosure_diff.pairing import (
     Pair,
     Pairing,
     build_pair_request,
@@ -10,9 +10,9 @@ from document_impact_analyzer.pairing import (
     read_pairing,
     write_pairing,
 )
-from document_impact_analyzer.passages import Passage
-from document_impact_analyzer.settings import DataDir
-from document_impact_analyzer.topics import PROTECTIONISM
+from disclosure_diff.passages import Passage
+from disclosure_diff.settings import DataDir
+from disclosure_diff.topics import PROTECTIONISM
 
 # The same statement in other words: wording alone does not match these two.
 OLD_RISK = Passage(

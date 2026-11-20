@@ -31,13 +31,13 @@ dev = [
 ]
 
 [project.scripts]
-dia = "document_impact_analyzer.cli:main"
+dia = "disclosure_diff.cli:main"
 
 [project.urls]
 Repository = "https://github.com/rocky2397/disclosure-diff"
 
 [tool.setuptools.packages.find]
-include = ["document_impact_analyzer*"]
+include = ["disclosure_diff*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,4 +1,4 @@
-from document_impact_analyzer.judgements import (
+from disclosure_diff.judgements import (
     Concreteness,
     Direction,
     Judgement,
@@ -8,7 +8,7 @@ from document_impact_analyzer.judgements import (
     judgements_path,
     read_judgements,
 )
-from document_impact_analyzer.settings import DataDir
+from disclosure_diff.settings import DataDir
 
 
 def judgement(passage_id="abc123", relevance=Relevance.COMPANY):

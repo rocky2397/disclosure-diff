@@ -1,7 +1,7 @@
 import pytest
 
-from document_impact_analyzer.library import ReportFile, extracted_path, find_reports
-from document_impact_analyzer.settings import DataDir
+from disclosure_diff.library import ReportFile, extracted_path, find_reports
+from disclosure_diff.settings import DataDir
 
 
 @pytest.fixture

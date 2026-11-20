@@ -20,18 +20,18 @@ from collections.abc import Callable, Sequence
 from datetime import date
 from pathlib import Path
 
-from document_impact_analyzer import evalset, sec
-from document_impact_analyzer.changes import Change, compare_years, unmatched
-from document_impact_analyzer.filings import UnreadableFiling, extract_filing
-from document_impact_analyzer.ingest import OcrUnavailable, extract, extraction_allowed
-from document_impact_analyzer.judge import (
+from disclosure_diff import evalset, sec
+from disclosure_diff.changes import Change, compare_years, unmatched
+from disclosure_diff.filings import UnreadableFiling, extract_filing
+from disclosure_diff.ingest import OcrUnavailable, extract, extraction_allowed
+from disclosure_diff.judge import (
     DEFAULT_EFFORT,
     DEFAULT_MODEL,
     ClaudeJudge,
     Judge,
     JudgeError,
 )
-from document_impact_analyzer.judgements import (
+from disclosure_diff.judgements import (
     Concreteness,
     Judgement,
     Relevance,
@@ -39,32 +39,32 @@ from document_impact_analyzer.judgements import (
     judgements_path,
     read_judgements,
 )
-from document_impact_analyzer.library import (
+from disclosure_diff.library import (
     REPORT_SUFFIXES,
     ReportFile,
     extracted_path,
     find_reports,
     record_source,
 )
-from document_impact_analyzer.pairing import (
+from disclosure_diff.pairing import (
     MAX_PASSAGES,
     Pairing,
     pairing_path,
     read_pairing,
     write_pairing,
 )
-from document_impact_analyzer.passages import (
+from disclosure_diff.passages import (
     Neighbours,
     Passage,
     find_neighbours,
     read_jsonl,
     write_jsonl,
 )
-from document_impact_analyzer.report import YearRow, render_changes, render_missed, render_years
-from document_impact_analyzer.retrieval import find_candidates
-from document_impact_analyzer.settings import DataDir, DataDirError, resolve_data_dir
-from document_impact_analyzer.tables import looks_like_table
-from document_impact_analyzer.topics import TOPICS, Topic, get_topic
+from disclosure_diff.report import YearRow, render_changes, render_missed, render_years
+from disclosure_diff.retrieval import find_candidates
+from disclosure_diff.settings import DataDir, DataDirError, resolve_data_dir
+from disclosure_diff.tables import looks_like_table
+from disclosure_diff.topics import TOPICS, Topic, get_topic
 
 SECOND_LOOK = (
     "A passage that comes back as background is sent once more, with the paragraphs before "

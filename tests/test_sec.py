@@ -2,10 +2,10 @@ import json
 
 import pytest
 
-from document_impact_analyzer import sec
-from document_impact_analyzer.cli import main
-from document_impact_analyzer.library import find_reports
-from document_impact_analyzer.settings import DataDir
+from disclosure_diff import sec
+from disclosure_diff.cli import main
+from disclosure_diff.library import find_reports
+from disclosure_diff.settings import DataDir
 
 TICKERS = {"0": {"cik_str": 93410, "ticker": "CVX", "title": "CHEVRON CORP"}}
 SUBMISSIONS = {

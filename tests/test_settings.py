@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from document_impact_analyzer.settings import (
+from disclosure_diff.settings import (
     ENV_VAR,
     POINTER_FILE,
     DataDirError,

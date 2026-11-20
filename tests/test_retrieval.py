@@ -1,8 +1,8 @@
 import pytest
 
-from document_impact_analyzer.passages import Passage
-from document_impact_analyzer.retrieval import find_candidates, find_matches
-from document_impact_analyzer.topics import (
+from disclosure_diff.passages import Passage
+from disclosure_diff.retrieval import find_candidates, find_matches
+from disclosure_diff.topics import (
     ARTIFICIAL_INTELLIGENCE,
     COVID,
     CYBERSECURITY,

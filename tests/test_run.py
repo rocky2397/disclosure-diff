@@ -5,7 +5,7 @@ from test_cli import StubJudge
 from test_filings import FILING
 from test_sec import URL_2024, URL_2025, FakeSec
 
-from document_impact_analyzer.cli import main
+from disclosure_diff.cli import main
 
 # The later filing words the tariff risk anew and keeps the sentence on export controls.
 FILING_2025 = FILING.replace(

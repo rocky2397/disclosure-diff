@@ -1,4 +1,4 @@
-from document_impact_analyzer.passages import (
+from disclosure_diff.passages import (
     Neighbours,
     Passage,
     find_neighbours,

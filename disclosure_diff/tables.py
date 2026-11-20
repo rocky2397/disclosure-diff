@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import re
 
-from document_impact_analyzer.passages import normalize
+from disclosure_diff.passages import normalize
 
 # 630 · 9,061 · (147) · 25% · 1.5 · – (an empty table cell) · a currency sign on its own
 _FIGURE = re.compile(r"^(?:[(\-–−]?[$€£]?\d[\d.,]*%?\)?[.,;:]?|[–—\-]|[$€£])$")

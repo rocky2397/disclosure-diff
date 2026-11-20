@@ -16,8 +16,8 @@ import re
 from html.parser import HTMLParser
 from pathlib import Path
 
-from document_impact_analyzer.ingest import Extraction
-from document_impact_analyzer.passages import Passage, normalize
+from disclosure_diff.ingest import Extraction
+from disclosure_diff.passages import Passage, normalize
 
 # A new one of these ends the paragraph before it.
 _BLOCKS = frozenset(

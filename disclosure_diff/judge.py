@@ -22,22 +22,22 @@ from collections.abc import Sequence
 from dataclasses import replace
 from typing import Any, Protocol
 
-from document_impact_analyzer.judgements import (
+from disclosure_diff.judgements import (
     Concreteness,
     Direction,
     Judgement,
     Relevance,
     evidence_is_verbatim,
 )
-from document_impact_analyzer.pairing import (
+from disclosure_diff.pairing import (
     PAIR_PROMPT,
     PAIR_SCHEMA,
     Pair,
     build_pair_request,
     pairs_from_answer,
 )
-from document_impact_analyzer.passages import Neighbours, Passage, normalize
-from document_impact_analyzer.topics import Topic
+from disclosure_diff.passages import Neighbours, Passage, normalize
+from disclosure_diff.topics import Topic
 
 # Chosen after judging the same 31 passages with claude-opus-5-5 and with this model: the
 # verdicts matched on 28, differed only on borderline passages, and this model cost about

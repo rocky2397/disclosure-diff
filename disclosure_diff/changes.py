@@ -20,8 +20,8 @@ from dataclasses import dataclass
 from difflib import SequenceMatcher
 from enum import Enum
 
-from document_impact_analyzer.pairing import Pair
-from document_impact_analyzer.passages import Passage, normalize
+from disclosure_diff.pairing import Pair
+from disclosure_diff.passages import Passage, normalize
 
 _TOKEN = re.compile(r"\w+(?:[.,]\d+)*")
 _YEAR = re.compile(r"^(?:19|20)\d\d$")

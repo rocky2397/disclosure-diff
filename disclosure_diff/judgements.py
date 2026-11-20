@@ -12,8 +12,8 @@ from dataclasses import asdict, dataclass
 from enum import Enum
 from pathlib import Path
 
-from document_impact_analyzer.passages import normalize
-from document_impact_analyzer.settings import DataDir
+from disclosure_diff.passages import normalize
+from disclosure_diff.settings import DataDir
 
 
 class Relevance(str, Enum):

@@ -23,10 +23,10 @@ from collections.abc import Callable, Sequence
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
-from document_impact_analyzer.judge import Judge, JudgeError
-from document_impact_analyzer.judgements import Judgement
-from document_impact_analyzer.passages import Neighbours, Passage
-from document_impact_analyzer.topics import Topic
+from disclosure_diff.judge import Judge, JudgeError
+from disclosure_diff.judgements import Judgement
+from disclosure_diff.passages import Neighbours, Passage
+from disclosure_diff.topics import Topic
 
 # The four answers a verdict consists of, with the wording used in the summary.
 ANSWERS = {

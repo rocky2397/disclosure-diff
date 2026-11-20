@@ -9,10 +9,10 @@ from __future__ import annotations
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 
-from document_impact_analyzer.changes import Change, Status
-from document_impact_analyzer.judgements import Judgement, Relevance
-from document_impact_analyzer.passages import Passage, normalize
-from document_impact_analyzer.topics import Topic
+from disclosure_diff.changes import Change, Status
+from disclosure_diff.judgements import Judgement, Relevance
+from disclosure_diff.passages import Passage, normalize
+from disclosure_diff.topics import Topic
 
 
 def quote(passage: Passage, *, max_chars: int = 700) -> str:

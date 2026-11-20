@@ -15,7 +15,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from document_impact_analyzer.settings import DataDir, is_sidecar
+from disclosure_diff.settings import DataDir, is_sidecar
 
 _YEAR_FILE = re.compile(r"^((?:19|20)\d\d)\.(?:pdf|html?)$", re.IGNORECASE)
 # A report is a PDF, or the HTML of a filing with the SEC.

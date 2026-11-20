@@ -13,9 +13,9 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from functools import cache
 
-from document_impact_analyzer.passages import Passage, normalize
-from document_impact_analyzer.tables import looks_like_table
-from document_impact_analyzer.topics import Topic
+from disclosure_diff.passages import Passage, normalize
+from disclosure_diff.tables import looks_like_table
+from disclosure_diff.topics import Topic
 
 _JOIN_IN_WORD = r"[\s\-–]*"  # anti-dumping, anti dumping, antidumping
 _JOIN_WORDS = r"[\s\-–]+"  # trade barrier, trade-barrier

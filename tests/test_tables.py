@@ -1,6 +1,6 @@
 import pytest
 
-from document_impact_analyzer.tables import figure_share, looks_like_table
+from disclosure_diff.tables import figure_share, looks_like_table
 
 PROSE = [
     "New tariffs on steel imports raised our procurement costs by $120 million in 2023, "

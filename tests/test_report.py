@@ -1,8 +1,8 @@
-from document_impact_analyzer.changes import compare_years
-from document_impact_analyzer.judgements import Concreteness, Direction, Judgement, Relevance
-from document_impact_analyzer.passages import Passage
-from document_impact_analyzer.report import describe, quote, render_changes
-from document_impact_analyzer.topics import PROTECTIONISM
+from disclosure_diff.changes import compare_years
+from disclosure_diff.judgements import Concreteness, Direction, Judgement, Relevance
+from disclosure_diff.passages import Passage
+from disclosure_diff.report import describe, quote, render_changes
+from disclosure_diff.topics import PROTECTIONISM
 
 OLD = "Changes in trade policy, including tariffs and sanctions, could adversely affect us."
 REWORDED = (

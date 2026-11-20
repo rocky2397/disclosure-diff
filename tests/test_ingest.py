@@ -1,11 +1,11 @@
-from document_impact_analyzer.ingest import (
+from disclosure_diff.ingest import (
     body_font_size,
     extract_passages,
     extraction_allowed,
     read_blocks,
     read_sections,
 )
-from document_impact_analyzer.sections import Section
+from disclosure_diff.sections import Section
 
 
 def test_sections_come_from_the_bookmarks(report_pdf):

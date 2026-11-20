@@ -2,11 +2,11 @@ import json
 
 import pytest
 
-from document_impact_analyzer import evalset
-from document_impact_analyzer.judge import JudgeError
-from document_impact_analyzer.judgements import Concreteness, Direction, Judgement, Relevance
-from document_impact_analyzer.passages import Neighbours, Passage
-from document_impact_analyzer.topics import PROTECTIONISM
+from disclosure_diff import evalset
+from disclosure_diff.judge import JudgeError
+from disclosure_diff.judgements import Concreteness, Direction, Judgement, Relevance
+from disclosure_diff.passages import Neighbours, Passage
+from disclosure_diff.topics import PROTECTIONISM
 
 
 def verdict(passage, relevance, *, model="reference-model", verified=True):
