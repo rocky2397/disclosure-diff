@@ -304,12 +304,11 @@ logical change each. Decisions that should outlive a commit message go into `doc
 The first version scored "vulnerability" from single-word overlap and a movie-review
 sentiment model. It was replaced in November 2026; the 13 passages it wrongly marked as
 relevant are kept as a test. Commands for labelling passages by hand and scoring against
-those labels were built and then removed, because nobody was going to label; `disclosure-diff eval`
-replaced them.
+those labels were built and then removed, because nobody was going to label;
+`disclosure-diff eval` replaced them.
 
-The project was first called Document Impact Analyzer. The Python package and the `dia`
-command keep that name; the repository was renamed because the tool measures disclosure,
-not impact.
+The project was first called Document Impact Analyzer, and its command `dia`. Both were
+renamed because the tool measures disclosure, not impact.
 
 ## License
 
